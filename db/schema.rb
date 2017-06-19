@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604152900) do
+ActiveRecord::Schema.define(version: 20170619153544) do
+
+  create_table "images", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["user_id"], name: "index_images_on_user_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "email"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
